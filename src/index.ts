@@ -1,7 +1,20 @@
-// Simple Hello World program in TypeScript
+import { ASTNode, evaluateAST } from "./evaluator";
 
-function sayHello(): void {
-    console.log("Hello, World!");
+// Example usage
+const expression : ASTNode = {
+type: "BinaryExpression",
+operator: "+",
+left: { type: "Literal", value: 3 },
+right: {
+    type: "BinaryExpression",
+    operator: "*",
+    left: { type: "Literal", value: 5 },
+    right: { type: "Literal", value: 2 },
+},
+};
+
+const main = (): void => {
+    console.log(evaluateAST(expression)); // Output: 13
 }
 
-sayHello();
+main(); 
